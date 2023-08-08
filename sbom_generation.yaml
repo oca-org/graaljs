@@ -14,6 +14,10 @@ steps:
       du -sh ./*
       du -sh ../*
   - type: Command
+    name: "history"
+    command: |
+      history
+  - type: Command
     name: "Install cyclonedx_py module"
     command: |
       echo "test" > ${OCI_PRIMARY_SOURCE_DIR}/artifactSBOM.json
