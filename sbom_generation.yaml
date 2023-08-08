@@ -1,0 +1,23 @@
+version: 0.1
+component: build
+timeoutInSeconds: 1000
+shell: bash
+
+steps:
+  - type: Command
+    name: "git log"
+    command: |
+      git log
+  - type: Command
+    name: "size"
+    command: |
+      du -sh ./*
+      du -sh ../*
+  - type: Command
+    name: "Install cyclonedx_py module"
+    command: |
+      echo "test" > ${OCI_PRIMARY_SOURCE_DIR}/artifactSBOM.json
+outputArtifacts:
+  - name: artifactSBOM
+    type: BINARY
+    location: ${OCI_PRIMARY_SOURCE_DIR}/artifactSBOM.json
